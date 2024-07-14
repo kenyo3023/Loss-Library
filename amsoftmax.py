@@ -16,8 +16,9 @@ class AMSoftmaxLoss(nn.Module):
 
         cos_theta = x
 
-        cos_theta_m = cos_theta - self.m
-        cos_theta[index_y, y] = cos_theta_m[index_y, y]
+        # cos_theta_m = cos_theta - self.m
+        # cos_theta[index_y, y] = cos_theta_m[index_y, y]
+        cos_theta[index_y, y] = cos_theta[index_y, y] - self.m
 
         logits = cos_theta * self.s
         loss = self.criterion(logits, y)
